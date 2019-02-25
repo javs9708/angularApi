@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { StatusFilterComponent } from './status-filter/status-filter.component';
+import { TableComponent } from './table/table.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -21,7 +23,8 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
-    StatusFilterComponent
+    StatusFilterComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    NgxPaginationModule,
     FormsModule
 
   ],

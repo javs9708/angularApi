@@ -26,250 +26,97 @@
 
 
 <!----------------------------------------------------------------------------->
+<table class="table" [ngSwitch]="state">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <th>URL</th>
+              <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <div *ngSwitchCase="'empty'">
+                  <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
 
-<div class="mat-elevation-z8">
+                    <td>{{i.id}}</td>
+                    <td>{{i.Url}}</td>
+                    <div *ngIf="i.status == 'PENDING' ">
+                      <td><span class="pending">{{i.status}}</span></td>
+                    </div>
+                    <div *ngIf="i.status == 'PROCESSING' ">
+                      <td><span class="processing">{{i.status}}</span></td>
+                    </div>
+                    <div *ngIf="i.status == 'DONE' ">
+                      <td><span class="done">{{i.status}}</span></td>
+                    </div>
+                  </tr>
 
-  <div [ngSwitch]="state">
-
-    <div *ngSwitchCase="'all-4'">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="STATUS">
-          <th mat-header-cell *matHeaderCellDef> STATUS </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="element.status == 'PENDING' ">
-               <span class="pending">{{element.status}}</span>
             </div>
 
-            <div *ngIf="element.status == 'PROCESSING' ">
-             <span class="processing">{{element.status}}</span>
+          <div *ngSwitchCase="'all-4'">
 
-           </div>
+            <div *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
+                  <tr>
+                    <td>{{i.id}}</td>
 
-           <div *ngIf="element.status == 'DONE' ">
-             <span class="done">{{element.status}}</span>
-           </div>
+                    <td>{{i.Url}}</td>
+                    <div *ngIf="i.status == 'PENDING' ">
+                      <td><span class="pending">{{i.status}}</span></td>
+                    </div>
+                    <div *ngIf="i.status == 'PROCESSING' ">
+                      <td><span class="processing">{{i.status}}</span></td>
+                    </div>
+                    <div *ngIf="i.status == 'DONE' ">
+                      <td><span class="done">{{i.status}}</span></td>
+                    </div>
+                  </tr>
+                </div>
+          </div>
+
+            <div *ngSwitchCase="'pending-1'">
+                <div *ngFor="let i of infoPending | paginate: {itemsPerPage: 4, currentPage: p}">
 
 
-           </td>
-        </ng-container>
+                  <div *ngIf="i.status == 'PENDING' ">
+                    <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.Url}}</td>
+                      <td><span class="pending">{{i.status}}</span></td>
+                    </tr>
 
-          <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element">
-
-              {{element.id}}
-
-            </td>
-
-          </ng-container>
-
-
-          <ng-container matColumnDef="URL">
-            <th mat-header-cell *matHeaderCellDef> URL </th>
-            <td mat-cell *matCellDef="let element">
-
-              {{element.Url}}
-
-            </td>
-          </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-
-    </div>
-
-<!----------------------------------------------------------------------------->
-
-    <div *ngSwitchCase="'all'">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="STATUS">
-          <th mat-header-cell *matHeaderCellDef> STATUS </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="element.status == 'PENDING' ">
-               <span class="pending">{{element.status}}</span>
+                </div>
+            </div>
             </div>
 
-            <div *ngIf="element.status == 'PROCESSING' ">
-             <span class="processing">{{element.status}}</span>
+            <div *ngSwitchCase="'processing-2'">
 
-           </div>
-
-           <div *ngIf="element.status == 'DONE' ">
-             <span class="done">{{element.status}}</span>
-           </div>
-
-
-           </td>
-        </ng-container>
-
-          <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element">
-
-              {{element.id}}
-
-            </td>
-
-          </ng-container>
-
-
-          <ng-container matColumnDef="URL">
-            <th mat-header-cell *matHeaderCellDef> URL </th>
-            <td mat-cell *matCellDef="let element">
-
-              {{element.Url}}
-
-            </td>
-          </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-
-    </div>
-
-<!----------------------------------------------------------------------------->
-
-    <div *ngSwitchCase="'pending-1'">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="STATUS">
-          <th mat-header-cell *matHeaderCellDef> STATUS </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="element.status == 'PENDING' ">
-               <span class="pending">{{element.status}}</span>
+                <div *ngFor="let i of infoProcessing| paginate: {itemsPerPage: 4, currentPage: p}">
+                  <div *ngIf="i.status == 'PROCESSING' ">
+                    <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.Url}}</td>
+                      <td><span class="processing">{{i.status}}</span></td>
+                    </tr>
+                  </div>
+                </div>
             </div>
 
 
+            <div *ngSwitchCase="'done-3'">
 
-           </td>
-        </ng-container>
-
-          <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'PENDING' ">
-              {{element.id}}
+              <div *ngFor="let i of infoDone| paginate: {itemsPerPage: 4, currentPage: p}">
+                  <div *ngIf="i.status == 'DONE' ">
+                    <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.Url}}</td>
+                      <td><span class="done">{{i.status}}</span></td>
+                    </tr>
+                  </div>
+                </div>
               </div>
-            </td>
-
-          </ng-container>
 
 
-          <ng-container matColumnDef="URL">
-            <th mat-header-cell *matHeaderCellDef> URL </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'PENDING' ">
-              {{element.Url}}
-              </div>
-            </td>
-          </ng-container>
+        </tbody>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-
-    </div>
-
-    <!----------------------------------------------------------------------------->
-
-    <div *ngSwitchCase="'processing-2'">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="STATUS">
-          <th mat-header-cell *matHeaderCellDef> STATUS </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="element.status == 'PROCESSING' ">
-               <span class="processing">{{element.status}}</span>
-            </div>
-
-           </td>
-        </ng-container>
-
-          <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'PROCESSING' ">
-              {{element.id}}
-              </div>
-            </td>
-
-          </ng-container>
-
-
-          <ng-container matColumnDef="URL">
-            <th mat-header-cell *matHeaderCellDef> URL </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'PROCESSING' ">
-              {{element.Url}}
-              </div>
-            </td>
-          </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-
-
-    </div>
-<!----------------------------------------------------------------------------->
-
-    <div *ngSwitchCase="'done-3'">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="STATUS">
-          <th mat-header-cell *matHeaderCellDef> STATUS </th>
-          <td mat-cell *matCellDef="let element">
-
-            <div *ngIf="element.status == 'DONE' ">
-               <span class="done">{{element.status}}</span>
-            </div>
-
-
-
-           </td>
-        </ng-container>
-
-          <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'DONE' ">
-              {{element.id}}
-              </div>
-            </td>
-
-          </ng-container>
-
-
-          <ng-container matColumnDef="URL">
-            <th mat-header-cell *matHeaderCellDef> URL </th>
-            <td mat-cell *matCellDef="let element">
-              <div *ngIf="element.status == 'DONE' ">
-              {{element.Url}}
-              </div>
-            </td>
-          </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-
-
-    </div>
-  </div>
-  <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
-
-
-</div>
+<div class="paginator"> <pagination-controls (pageChange)="p = $event" > </pagination-controls></div>
+</table>

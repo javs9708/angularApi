@@ -9,8 +9,9 @@
   margin-left: 400px;
 }
 
-table {
-  width: 100%;
+.table {
+  width: 50%;
+  margin-left: 130px;
 
 }
 
@@ -32,4 +33,8 @@ table {
 .done{
   color: green;
   font-family: "Arial Black";
+}
+
+.paginator{
+  margin-left: 300px;
 }
