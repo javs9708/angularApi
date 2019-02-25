@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.title{
+  margin-left: 130px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: Arial, cursive;
+}
+
+.label{
+  margin-left: 130px;
+  margin-top: 60px;
+  font-size: 10%;
+}
+.urls{
+  margin-left: 400px;
+  margin-top: 60px;
+  font-size: 10%;
+}
