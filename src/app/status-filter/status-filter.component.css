@@ -1,3 +1,35 @@
 .statusFilter{
   margin-left: 130px;
 }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 400px;
+}
+
+table {
+  width: 100%;
+
+}
+
+.mat-elevation-z8{
+  margin-left: 130px;
+  margin-right: 130px;
+}
+
+.pending{
+  color: red;
+  font-family: "Arial Black";
+}
+
+.processing{
+  color: blue;
+  font-family: "Arial Black";
+}
+
+.done{
+  color: green;
+  font-family: "Arial Black";
+}
