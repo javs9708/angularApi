@@ -24,12 +24,12 @@
 <br><br><br>
 
 
-<!-- Villegas lo chupa cagado :v --------------------------------------------------------------->
-<table class="table" [ngSwitch]="state">
+<!----------------------------------------------------------------->
+<table class="centered" [ngSwitch]="state">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>URL</th>
+      <th >ID</th>
+      <th width="80%">URL</th>
       <th>STATUS</th>
     </tr>
   </thead>
@@ -38,7 +38,9 @@
     <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
       <td>{{i.id}}</td>
       <td>{{i.Url}}</td>
+
       <div *ngIf="i.status == 'PENDING' ">
+
         <td><span class="pending">{{i.status}}</span></td>
       </div>
       <div *ngIf="i.status == 'PROCESSING' ">
@@ -51,10 +53,11 @@
   </tbody>
 
   <tbody *ngSwitchCase="'all-4'">
-    <div *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
-      <tr>
+    <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
+
         <td>{{i.id}}</td>
         <td>{{i.Url}}</td>
+
         <div *ngIf="i.status == 'PENDING' ">
           <td><span class="pending">{{i.status}}</span></td>
         </div>
@@ -64,47 +67,40 @@
         <div *ngIf="i.status == 'DONE' ">
           <td><span class="done">{{i.status}}</span></td>
         </div>
+
       </tr>
-    </div>
   </tbody>
 
   <tbody *ngSwitchCase="'pending-1'">
-    <div *ngFor="let i of infoPending | paginate: {itemsPerPage: 4, currentPage: p}">
-      <div *ngIf="i.status == 'PENDING' ">
-        <tr>
+    <tr *ngFor="let i of infoPending | paginate: {itemsPerPage: 4, currentPage: p}">
+
           <td>{{i.id}}</td>
           <td>{{i.Url}}</td>
           <td><span class="pending">{{i.status}}</span></td>
-        </tr>
-      </div>
-    </div>
+
+    </tr>
   </tbody>
 
   <tbody *ngSwitchCase="'processing-2'">
-    <div *ngFor="let i of infoProcessing| paginate: {itemsPerPage: 4, currentPage: p}">
-      <div *ngIf="i.status == 'PROCESSING' ">
-        <tr>
+    <tr *ngFor="let i of infoProcessing| paginate: {itemsPerPage: 4, currentPage: p}">
+
+
           <td>{{i.id}}</td>
           <td>{{i.Url}}</td>
           <td><span class="processing">{{i.status}}</span></td>
         </tr>
-      </div>
-    </div>
+
+
   </tbody>
 
   <tbody *ngSwitchCase="'done-3'">
-    <div *ngFor="let i of infoDone| paginate: {itemsPerPage: 4, currentPage: p}">
-      <div *ngIf="i.status == 'DONE' ">
-        <tr>
+    <tr *ngFor="let i of infoDone| paginate: {itemsPerPage: 4, currentPage: p}">
           <td>{{i.id}}</td>
           <td>{{i.Url}}</td>
           <td><span class="done">{{i.status}}</span></td>
         </tr>
-      </div>
-    </div>
   </tbody>
-
-  <div class="paginator">
-    <pagination-controls (pageChange)="p = $event"> </pagination-controls>
-  </div>
 </table>
+<div class="paginator">
+  <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+</div>
