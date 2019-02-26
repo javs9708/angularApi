@@ -1,18 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-
+import {RequestService} from '../services/request.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers:[RequestService]
 })
 export class TableComponent implements OnInit {
 
 
+  public jobs;
 
-  constructor() { }
+  constructor(
+    private _requestService: RequestService
+  ) { }
 
   ngOnInit() {
+    this._requestService.getJobs().subscribe(
+        result => {
+          console.log(result);
+        },
+
+        error =>{
+          var  err = <any>error;
+          console.log(err);
+        }
+
+    );
+
+    console.log(this._requestService.getTest());
   }
 
 }
