@@ -14,8 +14,8 @@ import { MatPaginatorModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { StatusFilterComponent } from './status-filter/status-filter.component';
-import { TableComponent } from './table/table.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -25,7 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     AppComponent,
     StatusFilterComponent,
-    TableComponent
+    FilterPipe
   ],
   imports: [
     BrowserModule,

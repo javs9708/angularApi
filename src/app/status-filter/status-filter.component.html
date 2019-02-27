@@ -15,8 +15,7 @@
   <div class="col s1">
     <div class="example-form">
 
-      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off">
-
+        <input ng-model="filtro" placeholder="Search">
 
     </div>
   </div>
@@ -36,47 +35,46 @@
 
   <tbody *ngSwitchCase="'empty'">
     <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
-      <td>{{i.id}}</td>
+      <td>{{i.Id}}</td>
       <td>{{i.Url}}</td>
 
-      <div *ngIf="i.status == 'PENDING' ">
+      <div *ngIf="i.Status == 'PENDING' ">
 
-        <td><span class="pending">{{i.status}}</span></td>
+        <td><span class="pending">{{i.Status}}</span></td>
       </div>
-      <div *ngIf="i.status == 'PROCESSING' ">
-        <td><span class="processing">{{i.status}}</span></td>
+      <div *ngIf="i.Status == 'PROCESSING' ">
+        <td><span class="processing">{{i.Status}}</span></td>
       </div>
-      <div *ngIf="i.status == 'DONE' ">
-        <td><span class="done">{{i.status}}</span></td>
+      <div *ngIf="i.Status == 'DONE' ">
+        <td><span class="done">{{i.Status}}</span></td>
       </div>
     </tr>
   </tbody>
 
   <tbody *ngSwitchCase="'all-4'">
     <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
+      <td>{{i.Id}}</td>
+      <td>{{i.Url}}</td>
 
-        <td>{{i.id}}</td>
-        <td>{{i.Url}}</td>
+      <div *ngIf="i.Status == 'PENDING' ">
 
-        <div *ngIf="i.status == 'PENDING' ">
-          <td><span class="pending">{{i.status}}</span></td>
-        </div>
-        <div *ngIf="i.status == 'PROCESSING' ">
-          <td><span class="processing">{{i.status}}</span></td>
-        </div>
-        <div *ngIf="i.status == 'DONE' ">
-          <td><span class="done">{{i.status}}</span></td>
-        </div>
-
-      </tr>
+        <td><span class="pending">{{i.Status}}</span></td>
+      </div>
+      <div *ngIf="i.Status == 'PROCESSING' ">
+        <td><span class="processing">{{i.Status}}</span></td>
+      </div>
+      <div *ngIf="i.Status == 'DONE' ">
+        <td><span class="done">{{i.Status}}</span></td>
+      </div>
+    </tr>
   </tbody>
 
   <tbody *ngSwitchCase="'pending-1'">
     <tr *ngFor="let i of infoPending | paginate: {itemsPerPage: 4, currentPage: p}">
 
-          <td>{{i.id}}</td>
+          <td>{{i.Id}}</td>
           <td>{{i.Url}}</td>
-          <td><span class="pending">{{i.status}}</span></td>
+          <td><span class="pending">{{i.Status}}</span></td>
 
     </tr>
   </tbody>
@@ -85,9 +83,9 @@
     <tr *ngFor="let i of infoProcessing| paginate: {itemsPerPage: 4, currentPage: p}">
 
 
-          <td>{{i.id}}</td>
+          <td>{{i.Id}}</td>
           <td>{{i.Url}}</td>
-          <td><span class="processing">{{i.status}}</span></td>
+          <td><span class="processing">{{i.Status}}</span></td>
         </tr>
 
 
@@ -95,9 +93,9 @@
 
   <tbody *ngSwitchCase="'done-3'">
     <tr *ngFor="let i of infoDone| paginate: {itemsPerPage: 4, currentPage: p}">
-          <td>{{i.id}}</td>
+          <td>{{i.Id}}</td>
           <td>{{i.Url}}</td>
-          <td><span class="done">{{i.status}}</span></td>
+          <td><span class="done">{{i.Status}}</span></td>
         </tr>
   </tbody>
 </table>

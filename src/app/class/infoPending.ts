@@ -1,5 +1,5 @@
 export class InfoPending {
-  id: number;
+  Id: number;
   Url: string;
-  status: string;
+  Status: string;
 }
