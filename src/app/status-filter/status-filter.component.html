@@ -34,7 +34,7 @@
       </tr>
     </thead>
 
-    <tbody *ngSwitchCase="'empty'">
+    <tbody align="center" *ngSwitchCase="'empty'">
       <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
         <td>{{i.Id}}</td>
         <td>{{i.Url}}</td>
@@ -52,7 +52,7 @@
       </tr>
     </tbody>
 
-    <tbody *ngSwitchCase="'all-4'">
+    <tbody align="center" *ngSwitchCase="'all-4'">
       <tr *ngFor="let i of info | paginate: {itemsPerPage: 4, currentPage: p}">
         <td>{{i.Id}}</td>
         <td>{{i.Url}}</td>
@@ -70,7 +70,7 @@
       </tr>
     </tbody>
 
-    <tbody *ngSwitchCase="'pending-1'">
+    <tbody align="center" *ngSwitchCase="'pending-1'">
       <tr *ngFor="let i of infoPending | paginate: {itemsPerPage: 4, currentPage: p}">
 
             <td>{{i.Id}}</td>
@@ -80,7 +80,7 @@
       </tr>
     </tbody>
 
-    <tbody *ngSwitchCase="'processing-2'">
+    <tbody align="center" *ngSwitchCase="'processing-2'">
       <tr *ngFor="let i of infoProcessing| paginate: {itemsPerPage: 4, currentPage: p}">
 
 
@@ -92,7 +92,7 @@
 
     </tbody>
 
-    <tbody *ngSwitchCase="'done-3'">
+    <tbody align="center" *ngSwitchCase="'done-3'">
       <tr *ngFor="let i of infoDone| paginate: {itemsPerPage: 4, currentPage: p}">
             <td>{{i.Id}}</td>
             <td>{{i.Url}}</td>
@@ -115,7 +115,7 @@
       </tr>
     </thead>
 
-    <tbody *ngSwitchCase="'empty'">
+    <tbody align="center" *ngSwitchCase="'empty'">
       <tr *ngFor="let i of urlsArr | paginate: {itemsPerPage: 4, currentPage: p}">
         <td>{{i.Id}}</td>
         <td>{{i.Url}}</td>
@@ -133,7 +133,7 @@
       </tr>
     </tbody>
 
-    <tbody *ngSwitchCase="'all-4'">
+    <tbody align="center" *ngSwitchCase="'all-4'">
       <tr *ngFor="let i of urlsArr | paginate: {itemsPerPage: 4, currentPage: p}">
         <td>{{i.Id}}</td>
         <td>{{i.Url}}</td>
@@ -151,37 +151,39 @@
       </tr>
     </tbody>
 
-    <div *ngSwitchCase="'pending-1'">
-      <tbody *ngFor="let i of urlsArr | paginate: {itemsPerPage: 4, currentPage: p}">
+    <tbody align="center" *ngSwitchCase="'pending-1'">
+      <div *ngFor="let i of urlsArr | paginate: {itemsPerPage: 4, currentPage: p}">
         <tr *ngIf="i.Status == 'PENDING'">
             <td>{{i.Id}}</td>
             <td>{{i.Url}}</td>
             <td><span class="pending">{{i.Status}}</span></td>
         </tr>
-      </tbody>
-    </div>
+      </div>
+    </tbody>
 
-    <div *ngSwitchCase="'processing-2'">
-      <tbody *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
+
+    <tbody *ngSwitchCase="'processing-2'">
+      <p *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
         <tr *ngIf="i.Status == 'PROCESSING'">
             <td>{{i.Id}}</td>
             <td>{{i.Url}}</td>
             <td><span class="processing">{{i.Status}}</span></td>
           </tr>
-        </tbody>
+        </p>
 
 
-    </div>
+    </tbody>
 
-    <div *ngSwitchCase="'done-3'">
-      <tbody *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
+    <tbody align="center" *ngSwitchCase="'done-3'">
+      <div *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
         <tr *ngIf="i.Status == 'DONE'">
             <td>{{i.Id}}</td>
             <td>{{i.Url}}</td>
             <td><span class="done">{{i.Status}}</span></td>
           </tr>
-        </tbody>
-    </div>
+        </div>
+    </tbody>
+
   </table>
   <div class="paginator">
     <pagination-controls (pageChange)="p = $event"> </pagination-controls>
