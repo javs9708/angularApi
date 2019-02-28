@@ -9,7 +9,7 @@ export class RequestService {
   public url: string;
 
   constructor(private _http:Http) {
-    this.url = "http://192.168.233.128:8080/";
+    this.url = "http://192.168.233.128:8080/get_jobs";
   }
 
   getJobs(){

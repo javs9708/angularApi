@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InfoPending } from '../class/infoPending';
 import {RequestService} from '../services/request.service';
+import {MatTableDataSource} from '@angular/material';
 
 
 @Component({
@@ -9,15 +10,19 @@ import {RequestService} from '../services/request.service';
   styleUrls: ['./status-filter.component.css'],
   providers:[RequestService]
 })
+
+
+
+
 export class StatusFilterComponent implements OnInit {
 
-    public url:string;
     public state:string;
     public p:number=1;
     public infoPending:Array<InfoPending>;
     public infoProcessing:Array<InfoPending>;
     public infoDone:Array<InfoPending>;
     public info;
+
 
     states = [
       {value: 'pending-1', viewValue: 'PENDING'},
@@ -31,6 +36,7 @@ export class StatusFilterComponent implements OnInit {
     //dataSource = new MatTableDataSource<urlElements>(ELEMENT_DATA);
 
     //@ViewChild(MatPaginator) paginator: MatPaginator;
+
     constructor(private _requestService: RequestService){
       this.infoPending = [ new InfoPending()
                      ];
@@ -88,5 +94,32 @@ export class StatusFilterComponent implements OnInit {
 
     }
 
+searchUrl(termino:string):url[]{
+      termino  = termino.toLowerCase();
+      let urlsArr:url[]=[];
+      for(let i of this.info){
 
+        let url = i.Url.toLowerCase();
+
+        if(url.indexOf(termino)>=0){
+
+              urlsArr.push(i);
+          }
+
+          }
+
+      console.log(urlsArr);
+
+
+      return urlsArr;
+
+
+    }
+
+}
+
+export interface url{
+  Id:number;
+  Url:string;
+  Status:string;
 }

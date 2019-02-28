@@ -15,7 +15,7 @@
   <div class="col s1">
     <div class="example-form">
 
-        <input ng-model="filtro" placeholder="Search">
+        <input placeholder="Search"  (keyup)="searchUrl(search.value)" #search>
 
     </div>
   </div>
