@@ -18,10 +18,13 @@ export class StatusFilterComponent implements OnInit {
 
     public state:string;
     public p:number=1;
-    public infoPending:Array<InfoPending>;
-    public infoProcessing:Array<InfoPending>;
-    public infoDone:Array<InfoPending>;
+    public infoPending:url[]=[];
+    public infoProcessing:url[]=[];
+    public infoDone:url[]=[];
+    public urlsArr:url[]=[];
     public info;
+    public urlBoolean:boolean;
+    public text:string;
 
 
     states = [
@@ -38,14 +41,6 @@ export class StatusFilterComponent implements OnInit {
     //@ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private _requestService: RequestService){
-      this.infoPending = [ new InfoPending()
-                     ];
-      this.infoProcessing = [ new InfoPending()
-                    ];
-
-      this.infoDone = [ new InfoPending()
-                     ];
-
 
     }
     ngOnInit() {
@@ -56,6 +51,9 @@ export class StatusFilterComponent implements OnInit {
           this.info=result;
 
           this.state="empty";
+          this.text="";
+          this.urlBoolean=false
+
           let i=0;
           let j=0;
           let k=0;
@@ -81,6 +79,7 @@ export class StatusFilterComponent implements OnInit {
                   }
                 }
 
+
         },
 
         error =>{
@@ -94,32 +93,41 @@ export class StatusFilterComponent implements OnInit {
 
     }
 
-searchUrl(termino:string):url[]{
-      termino  = termino.toLowerCase();
-      let urlsArr:url[]=[];
-      for(let i of this.info){
 
-        let url = i.Url.toLowerCase();
-
-        if(url.indexOf(termino)>=0){
-
-              urlsArr.push(i);
-          }
-
-          }
-
-      console.log(urlsArr);
+    change_url(){
+      if(this.text==""){
+        this.urlBoolean=false;
+        this.urlsArr=[];
+      }
+      else{
+        this.urlBoolean=true;
+      }
+      console.log(this.text);
+      console.log(this.urlBoolean);
+    }
 
 
-      return urlsArr;
+    searchUrl(termino:string):url[]{
+          termino  = termino.toLowerCase();
+          this.urlsArr=[];
+          for(let i of this.info){
 
+            let url = i.Url.toLowerCase();
+
+            if(url.indexOf(termino)>=0){
+              this.urlsArr.push(i);
+              }
+
+            }
+          console.log(this.urlsArr);
+          return this.urlsArr;
+
+        }
 
     }
 
-}
-
-export interface url{
-  Id:number;
-  Url:string;
-  Status:string;
+    export interface url{
+      Id:number;
+      Url:string;
+      Status:string;
 }
