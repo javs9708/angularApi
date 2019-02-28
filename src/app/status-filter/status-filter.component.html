@@ -152,36 +152,28 @@
     </tbody>
 
     <tbody align="center" *ngSwitchCase="'pending-1'">
-      <div *ngFor="let i of urlsArr | paginate: {itemsPerPage: 4, currentPage: p}">
-        <tr *ngIf="i.Status == 'PENDING'">
-            <td>{{i.Id}}</td>
-            <td>{{i.Url}}</td>
-            <td><span class="pending">{{i.Status}}</span></td>
+      <tr *ngFor="let i of urlsArr">
+            <td *ngIf="i.Status == 'PENDING' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Id}}</td>
+            <td *ngIf="i.Status == 'PENDING' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Url}}</td>
+            <td *ngIf="i.Status == 'PENDING' | paginate: {itemsPerPage: 4, currentPage: p}"><span class="pending">{{i.Status}}</span></td>
         </tr>
-      </div>
     </tbody>
 
 
     <tbody *ngSwitchCase="'processing-2'">
-      <p *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
-        <tr *ngIf="i.Status == 'PROCESSING'">
-            <td>{{i.Id}}</td>
-            <td>{{i.Url}}</td>
-            <td><span class="processing">{{i.Status}}</span></td>
-          </tr>
-        </p>
-
-
+      <tr *ngFor="let i of urlsArr">
+            <td *ngIf="i.Status == 'PROCESSING' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Id}}</td>
+            <td *ngIf="i.Status == 'PROCESSING' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Url}}</td>
+            <td *ngIf="i.Status == 'PROCESSING' | paginate: {itemsPerPage: 4, currentPage: p}"><span class="processing">{{i.Status}}</span></td>
+        </tr>
     </tbody>
 
     <tbody align="center" *ngSwitchCase="'done-3'">
-      <div *ngFor="let i of urlsArr| paginate: {itemsPerPage: 4, currentPage: p}">
-        <tr *ngIf="i.Status == 'DONE'">
-            <td>{{i.Id}}</td>
-            <td>{{i.Url}}</td>
-            <td><span class="done">{{i.Status}}</span></td>
-          </tr>
-        </div>
+      <tr *ngFor="let i of urlsArr ">
+            <td *ngIf="i.Status == 'DONE' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Id}}</td>
+            <td *ngIf="i.Status == 'DONE' | paginate: {itemsPerPage: 4, currentPage: p}">{{i.Url}}</td>
+            <td *ngIf="i.Status == 'DONE' | paginate: {itemsPerPage: 4, currentPage: p}"><span class="done">{{i.Status}}</span></td>
+        </tr>
     </tbody>
 
   </table>
